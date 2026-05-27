@@ -35,6 +35,7 @@ const translations = {
     dark_toggle_on: 'Mörkt läge',
     dark_toggle_off: 'Ljust läge',
     fossil_tagline: 'Njut medan det varar — elbilarna tar över.',
+    disclaimer: 'Konverteringarna är vägledande — vi tar inget ansvar för felaktigheter. Synpunkter? Skriv till',
   },
   en: {
     title: 'Fuel & EV Converter',
@@ -70,6 +71,7 @@ const translations = {
     dark_toggle_on: 'Dark mode',
     dark_toggle_off: 'Light mode',
     fossil_tagline: 'Enjoy it while it lasts — EVs are taking over.',
+    disclaimer: 'Conversions are indicative — we take no responsibility for inaccuracies. Feedback? Write to',
   },
 };
 

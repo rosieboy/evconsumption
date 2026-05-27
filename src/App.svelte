@@ -124,6 +124,7 @@
 
   <footer>
     <p>{$t.footer}</p>
+    <p class="disclaimer">{$t.disclaimer} <a href="mailto:androsen@gmail.com">androsen@gmail.com</a></p>
   </footer>
 </div>
 
@@ -349,6 +350,22 @@
     padding: 0 1rem 1.5rem;
     font-size: 0.72rem;
     color: var(--text-faint);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  footer a {
+    color: var(--text-faint);
+    text-underline-offset: 2px;
+  }
+
+  footer a:hover {
+    color: var(--accent);
+  }
+
+  .disclaimer {
+    font-style: italic;
   }
 
   /* ── Swoosh (kept for layout spacing) ─────────────── */
