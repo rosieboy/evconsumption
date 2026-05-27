@@ -4,12 +4,15 @@
     l100kmToUsMpg,
     ukMpgToL100km,
     l100kmToUkMpg,
+    l100kmToKmL,
+    kmLToL100km,
   } from '../lib/conversions.js';
   import { t } from './i18n.js';
 
   let usMpg = '';
   let ukMpg = '';
   let l100km = '';
+  let kmL = '';
 
   function fmt(n) {
     return n > 0 && isFinite(n) ? n.toFixed(2) : '';
@@ -22,9 +25,11 @@
       const l = usMpgToL100km(v);
       l100km = fmt(l);
       ukMpg = fmt(l100kmToUkMpg(l));
+      kmL = fmt(l100kmToKmL(l));
     } else {
       l100km = '';
       ukMpg = '';
+      kmL = '';
     }
   }
 
@@ -35,9 +40,11 @@
       const l = ukMpgToL100km(v);
       l100km = fmt(l);
       usMpg = fmt(l100kmToUsMpg(l));
+      kmL = fmt(l100kmToKmL(l));
     } else {
       l100km = '';
       usMpg = '';
+      kmL = '';
     }
   }
 
@@ -47,7 +54,24 @@
     if (v > 0) {
       usMpg = fmt(l100kmToUsMpg(v));
       ukMpg = fmt(l100kmToUkMpg(v));
+      kmL = fmt(l100kmToKmL(v));
     } else {
+      usMpg = '';
+      ukMpg = '';
+      kmL = '';
+    }
+  }
+
+  function onKmL(e) {
+    kmL = e.currentTarget.value;
+    const v = parseFloat(kmL);
+    if (v > 0) {
+      const l = kmLToL100km(v);
+      l100km = fmt(l);
+      usMpg = fmt(l100kmToUsMpg(l));
+      ukMpg = fmt(l100kmToUkMpg(l));
+    } else {
+      l100km = '';
       usMpg = '';
       ukMpg = '';
     }
@@ -167,6 +191,32 @@
         <span class="unit">L/100 km</span>
       </div>
       <p class="hint">{$t.hint_eu_std}</p>
+    </div>
+
+    <div class="arrows">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m21 16-4 4-4-4"></path>
+        <path d="M17 20V4"></path>
+        <path d="m3 8 4-4 4 4"></path>
+        <path d="M7 4v16"></path>
+      </svg>
+    </div>
+
+    <div class="field">
+      <label for="kml">{$t.kml_label} <span class="badge">JP/IN</span></label>
+      <div class="input-row">
+        <input
+          id="kml"
+          type="number"
+          value="{kmL}"
+          on:input="{onKmL}"
+          min="0"
+          step="0.1"
+          placeholder="{$t.placeholder_kml}"
+        />
+        <span class="unit">km/L</span>
+      </div>
+      <p class="hint">{$t.hint_kml}</p>
     </div>
   </div>
 </div>

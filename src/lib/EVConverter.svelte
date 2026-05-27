@@ -6,12 +6,15 @@
     mpgeToMiPerKwh,
     kwh100kmToMpge,
     mpgeToKwh100km,
+    kwh100kmToKwh100mi,
+    kwh100miToKwh100km,
   } from '../lib/conversions.js';
   import { t } from './i18n.js';
 
   let miPerKwh = '';
   let kwh100km = '';
   let mpge = '';
+  let kwh100mi = '';
 
   function fmt(n) {
     return n > 0 && isFinite(n) ? n.toFixed(2) : '';
@@ -21,11 +24,14 @@
     miPerKwh = e.currentTarget.value;
     const v = parseFloat(miPerKwh);
     if (v > 0) {
-      kwh100km = fmt(miPerKwhToKwh100km(v));
+      const k = miPerKwhToKwh100km(v);
+      kwh100km = fmt(k);
       mpge = fmt(miPerKwhToMpge(v));
+      kwh100mi = fmt(kwh100kmToKwh100mi(k));
     } else {
       kwh100km = '';
       mpge = '';
+      kwh100mi = '';
     }
   }
 
@@ -35,9 +41,11 @@
     if (v > 0) {
       miPerKwh = fmt(kwh100kmToMiPerKwh(v));
       mpge = fmt(kwh100kmToMpge(v));
+      kwh100mi = fmt(kwh100kmToKwh100mi(v));
     } else {
       miPerKwh = '';
       mpge = '';
+      kwh100mi = '';
     }
   }
 
@@ -45,11 +53,30 @@
     mpge = e.currentTarget.value;
     const v = parseFloat(mpge);
     if (v > 0) {
-      miPerKwh = fmt(mpgeToMiPerKwh(v));
-      kwh100km = fmt(mpgeToKwh100km(v));
+      const mi = mpgeToMiPerKwh(v);
+      miPerKwh = fmt(mi);
+      const k = miPerKwhToKwh100km(mi);
+      kwh100km = fmt(k);
+      kwh100mi = fmt(kwh100kmToKwh100mi(k));
     } else {
       miPerKwh = '';
       kwh100km = '';
+      kwh100mi = '';
+    }
+  }
+
+  function onKwh100mi(e) {
+    kwh100mi = e.currentTarget.value;
+    const v = parseFloat(kwh100mi);
+    if (v > 0) {
+      const k = kwh100miToKwh100km(v);
+      kwh100km = fmt(k);
+      miPerKwh = fmt(kwh100kmToMiPerKwh(k));
+      mpge = fmt(kwh100kmToMpge(k));
+    } else {
+      kwh100km = '';
+      miPerKwh = '';
+      mpge = '';
     }
   }
 </script>
@@ -165,6 +192,32 @@
         <span class="unit">MPGe</span>
       </div>
       <p class="hint">{$t.hint_mpge}</p>
+    </div>
+
+    <div class="arrows">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m21 16-4 4-4-4"></path>
+        <path d="M17 20V4"></path>
+        <path d="m3 8 4-4 4 4"></path>
+        <path d="M7 4v16"></path>
+      </svg>
+    </div>
+
+    <div class="field">
+      <label for="kwh-100mi">{$t.kwh100mi_label} <span class="badge">UK</span></label>
+      <div class="input-row">
+        <input
+          id="kwh-100mi"
+          type="number"
+          value="{kwh100mi}"
+          on:input="{onKwh100mi}"
+          min="0"
+          step="0.1"
+          placeholder="{$t.placeholder_kwh100mi}"
+        />
+        <span class="unit">kWh/100 mi</span>
+      </div>
+      <p class="hint">{$t.hint_kwh100mi}</p>
     </div>
   </div>
 </div>

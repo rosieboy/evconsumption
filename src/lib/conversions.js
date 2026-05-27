@@ -44,3 +44,15 @@ export function mpgeToMiPerKwh(mpge)    { return mpge / MPGE_KWH;        }
 export function kwh100kmToMpge(kwh)     { return miPerKwhToMpge(kwh100kmToMiPerKwh(kwh)); }
 /** MPGe → kWh/100 km */
 export function mpgeToKwh100km(mpge)    { return miPerKwhToKwh100km(mpgeToMiPerKwh(mpge)); }
+
+/** kWh/100 km → kWh/100 miles */
+export function kwh100kmToKwh100mi(kwh) { return kwh * 1.609344; }
+/** kWh/100 miles → kWh/100 km */
+export function kwh100miToKwh100km(kwh) { return kwh / 1.609344; }
+
+// ── Fossil extras ────────────────────────────────────────────────────────────
+
+/** L/100 km → km/L */
+export function l100kmToKmL(l)   { return 100 / l;   }
+/** km/L → L/100 km */
+export function kmLToL100km(kml) { return 100 / kml; }
