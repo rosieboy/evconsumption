@@ -28,6 +28,7 @@ const translations = {
     lang_toggle: 'English',
     dark_toggle_on: 'Mörkt läge',
     dark_toggle_off: 'Ljust läge',
+    fossil_tagline: 'Njut medan det varar — elbilarna tar över.',
   },
   en: {
     title: 'Fuel & EV Converter',
@@ -56,6 +57,7 @@ const translations = {
     lang_toggle: 'Svenska',
     dark_toggle_on: 'Dark mode',
     dark_toggle_off: 'Light mode',
+    fossil_tagline: 'Enjoy it while it lasts — EVs are taking over.',
   },
 };
 

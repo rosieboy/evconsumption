@@ -75,6 +75,7 @@
     </svg>
     {$t.fossil_heading}
   </h2>
+  <p class="tagline">{$t.fossil_tagline}</p>
 
   <div class="fields">
     <div class="field">
@@ -284,5 +285,12 @@
     font-size: 0.72rem;
     color: var(--text-faint);
     padding-left: 0.1rem;
+  }
+
+  .tagline {
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    font-style: italic;
+    margin: -0.6rem 0 1.1rem;
   }
 </style>
