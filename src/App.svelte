@@ -124,7 +124,9 @@
 
   <footer>
     <p>{$t.footer}</p>
-    <p class="disclaimer">{$t.disclaimer} <a href="mailto:androsen@gmail.com">androsen@gmail.com</a></p>
+    <p class="disclaimer">
+      {$t.disclaimer} <a href="mailto:androsen@gmail.com">androsen@gmail.com</a>
+    </p>
   </footer>
 </div>
 
